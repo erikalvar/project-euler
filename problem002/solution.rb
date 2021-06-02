@@ -12,6 +12,7 @@ def sum(max)
     sequence << new_term
   end
   sequence.pop
+  p sequence
   p sequence.select(&:even?).sum
 end
 
