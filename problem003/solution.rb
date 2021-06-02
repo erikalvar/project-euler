@@ -18,3 +18,11 @@ def largest_prime_factor(num)
 end
 
 largest_prime_factor(600851475143)
+
+# require 'prime'
+
+# def largest_prime_factor(num)
+#   p num.prime_division.last.first
+# end
+
+# largest_prime_factor(600851475143)
