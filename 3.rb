@@ -14,7 +14,7 @@ def largest_prime_factor(num)
     end
     variable_num += 1
   end
-  p largest
+  return largest
 end
 
 largest_prime_factor(600851475143)
