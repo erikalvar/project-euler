@@ -27,7 +27,7 @@ grid =
 
 grid_arr = []
 grid.split(" ").map { |num| grid_arr << num.to_i }
-@grid_arr = grid_arr.each_slice(20).to_a
+grid_arr = grid_arr.each_slice(20).to_a
 # p grid_arr
 
 largest_horizontal = 0
@@ -35,28 +35,48 @@ largest_vertical = 0
 largest_diagonal = 0
 
 # horizontal
-def largest_horizontal_product()
-  row_i = 0
-  column_i = 0
-  temp_product = 0
+row_i = 0
+column_i = 0
+temp_product = 0
 
-  while row_i < 20
-    # p grid_arr[row_i]
-    while column_i < 17
-      # p grid_arr[row_i][column_i]
-      temp_product = grid_arr[row_i][column_i] * grid_arr[row_i][column_i + 1] * grid_arr[row_i][column_i + 2] * grid_arr[row_i][column_i + 3]
-      # p temp_product
-      if temp_product > largest_horizontal
-        largest_horizontal = temp_product
-        # p largest_horizontal
-      end
-      column_i += 1
-    en
-    column_i = 0
-    row_i += 1
+while row_i < 20
+  # p grid_arr[row_i]
+  while column_i < 17
+    # p grid_arr[row_i][column_i]
+    temp_product = grid_arr[row_i][column_i] * grid_arr[row_i][column_i + 1] * grid_arr[row_i][column_i + 2] * grid_arr[row_i][column_i + 3]
+    # p temp_product
+    if temp_product > largest_horizontal
+      largest_horizontal = temp_product
+      # p largest_horizontal
+    end
+    column_i += 1
   end
-
-  p largest_horizontal
+  column_i = 0
+  row_i += 1
 end
 
-largest_horizontal_product()
+# p largest_horizontal
+
+# vertical
+
+row_i = 0
+column_i = 0
+temp_product = 0
+
+while column_i < 20
+  # p grid_arr[row_i]
+  while row_i < 17
+    # p grid_arr[row_i][column_i]
+    temp_product = grid_arr[row_i][column_i] * grid_arr[row_i + 1][column_i] * grid_arr[row_i + 2][column_i] * grid_arr[row_i + 3][column_i]
+    # p temp_product
+    if temp_product > largest_vertical
+      largest_vertical = temp_product
+      # p largest_vertical
+    end
+    row_i += 1
+  end
+  row_i = 0
+  column_i += 1
+end
+
+p largest_vertical
