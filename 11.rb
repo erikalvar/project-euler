@@ -55,7 +55,8 @@ while row_i < 20
   row_i += 1
 end
 
-# p largest_horizontal
+p largest_horizontal
+greatest_product = largest_horizontal
 
 # vertical
 
@@ -80,3 +81,35 @@ while column_i < 20
 end
 
 p largest_vertical
+
+if largest_vertical > greatest_product
+  greatest_product = largest_vertical
+end
+
+# diagonal
+
+row_i = 0
+column_i = 0
+temp_product = 0
+
+while column_i < 17
+  while row_i < 17
+    temp_product = grid_arr[row_i][column_i] * grid_arr[row_i + 1][column_i + 1] * grid_arr[row_i + 2][column_i + 2] * grid_arr[row_i + 3][column_i + 3]
+    if temp_product > largest_diagonal
+      largest_diagonal = temp_product
+      # p largest_diagonal
+    end
+    row_i += 1
+  end
+  column_i += 1
+end
+
+p largest_diagonal
+
+if largest_diagonal > greatest_product
+  greatest_product = largest_diagonal
+end
+
+p greatest_product
+
+# actually 2 diagonals, left to right and right to left
