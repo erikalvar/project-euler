@@ -32,7 +32,8 @@ grid_arr = grid_arr.each_slice(20).to_a
 
 largest_horizontal = 0
 largest_vertical = 0
-largest_diagonal = 0
+largest_lr_diagonal = 0
+largest_rl_diagonal = 0
 
 # horizontal
 row_i = 0
@@ -86,7 +87,7 @@ if largest_vertical > greatest_product
   greatest_product = largest_vertical
 end
 
-# diagonal
+# diagonal left to right
 
 row_i = 0
 column_i = 0
@@ -95,19 +96,53 @@ temp_product = 0
 while column_i < 17
   while row_i < 17
     temp_product = grid_arr[row_i][column_i] * grid_arr[row_i + 1][column_i + 1] * grid_arr[row_i + 2][column_i + 2] * grid_arr[row_i + 3][column_i + 3]
-    if temp_product > largest_diagonal
-      largest_diagonal = temp_product
-      # p largest_diagonal
+    # p grid_arr[row_i][column_i]
+    # p grid_arr[row_i + 1][column_i + 1]
+    # p grid_arr[row_i + 2][column_i + 2]
+    # p grid_arr[row_i + 3][column_i + 3]
+    if temp_product > largest_lr_diagonal
+      largest_lr_diagonal = temp_product
+      # p largest_lr_diagonal
     end
     row_i += 1
   end
+  row_i = 0
   column_i += 1
 end
 
-p largest_diagonal
+p largest_lr_diagonal
 
-if largest_diagonal > greatest_product
-  greatest_product = largest_diagonal
+if largest_lr_diagonal > greatest_product
+  greatest_product = largest_lr_diagonal
+end
+
+# diagonal right to left
+
+row_i = 0
+column_i = 3
+temp_product = 0
+
+while column_i < 19
+  while row_i < 17
+    temp_product = grid_arr[row_i][column_i] * grid_arr[row_i + 1][column_i - 1] * grid_arr[row_i + 2][column_i - 2] * grid_arr[row_i + 3][column_i - 3]
+    # p grid_arr[row_i][column_i]
+    # p grid_arr[row_i - 1][column_i - 1]
+    # p grid_arr[row_i - 2][column_i - 2]
+    # p grid_arr[row_i - 3][column_i - 3]
+    if temp_product > largest_rl_diagonal
+      largest_rl_diagonal = temp_product
+      # p largest_rl_diagonal
+    end
+    row_i += 1
+  end
+  row_i = 0
+  column_i += 1
+end
+
+p largest_rl_diagonal
+
+if largest_rl_diagonal > greatest_product
+  greatest_product = largest_rl_diagonal
 end
 
 p greatest_product
